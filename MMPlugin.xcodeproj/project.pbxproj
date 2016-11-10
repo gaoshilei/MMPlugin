@@ -1,0 +1,336 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		BD3810021DD44FDB00600F7F /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3810011DD44FDB00600F7F /* Foundation.framework */; };
+		BD38100C1DD44FDB00600F7F /* MMPlugin.mm in Sources */ = {isa = PBXBuildFile; fileRef = BD38100B1DD44FDB00600F7F /* MMPlugin.mm */; };
+		BD3810171DD4504100600F7F /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = BD3810161DD4504100600F7F /* UIKit.framework */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		BD380FFE1DD44FDB00600F7F /* MMPlugin.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = MMPlugin.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
+		BD3810011DD44FDB00600F7F /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		BD3810061DD44FDB00600F7F /* control.txt */ = {isa = PBXFileReference; lastKnownFileType = text; name = control.txt; path = Package/DEBIAN/control.txt; sourceTree = "<group>"; };
+		BD3810071DD44FDB00600F7F /* control */ = {isa = PBXFileReference; lastKnownFileType = text; name = control; path = Package/DEBIAN/control; sourceTree = "<group>"; };
+		BD3810091DD44FDB00600F7F /* PackageVersion.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = PackageVersion.plist; sourceTree = "<group>"; };
+		BD38100A1DD44FDB00600F7F /* MMPlugin-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "MMPlugin-Prefix.pch"; sourceTree = "<group>"; };
+		BD38100B1DD44FDB00600F7F /* MMPlugin.mm */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.objcpp; path = MMPlugin.mm; sourceTree = "<group>"; };
+		BD3810101DD44FDB00600F7F /* MMPlugin.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = MMPlugin.plist; path = Package/Library/MobileSubstrate/DynamicLibraries/MMPlugin.plist; sourceTree = "<group>"; };
+		BD3810161DD4504100600F7F /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		BD380FFA1DD44FDB00600F7F /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD3810171DD4504100600F7F /* UIKit.framework in Frameworks */,
+				BD3810021DD44FDB00600F7F /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		BD380FF41DD44FDB00600F7F = {
+			isa = PBXGroup;
+			children = (
+				BD3810031DD44FDB00600F7F /* MMPlugin */,
+				BD3810001DD44FDB00600F7F /* Frameworks */,
+				BD380FFF1DD44FDB00600F7F /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		BD380FFF1DD44FDB00600F7F /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				BD380FFE1DD44FDB00600F7F /* MMPlugin.dylib */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		BD3810001DD44FDB00600F7F /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				BD3810161DD4504100600F7F /* UIKit.framework */,
+				BD3810011DD44FDB00600F7F /* Foundation.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		BD3810031DD44FDB00600F7F /* MMPlugin */ = {
+			isa = PBXGroup;
+			children = (
+				BD38100B1DD44FDB00600F7F /* MMPlugin.mm */,
+				BD3810041DD44FDB00600F7F /* Package */,
+				BD3810081DD44FDB00600F7F /* Supporting Files */,
+			);
+			path = MMPlugin;
+			sourceTree = "<group>";
+		};
+		BD3810041DD44FDB00600F7F /* Package */ = {
+			isa = PBXGroup;
+			children = (
+				BD3810051DD44FDB00600F7F /* DEBIAN */,
+				BD38100D1DD44FDB00600F7F /* Library */,
+			);
+			name = Package;
+			sourceTree = "<group>";
+		};
+		BD3810051DD44FDB00600F7F /* DEBIAN */ = {
+			isa = PBXGroup;
+			children = (
+				BD3810061DD44FDB00600F7F /* control.txt */,
+				BD3810071DD44FDB00600F7F /* control */,
+			);
+			name = DEBIAN;
+			sourceTree = "<group>";
+		};
+		BD3810081DD44FDB00600F7F /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				BD3810091DD44FDB00600F7F /* PackageVersion.plist */,
+				BD38100A1DD44FDB00600F7F /* MMPlugin-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		BD38100D1DD44FDB00600F7F /* Library */ = {
+			isa = PBXGroup;
+			children = (
+				BD38100E1DD44FDB00600F7F /* MobileSubstrate */,
+			);
+			name = Library;
+			sourceTree = "<group>";
+		};
+		BD38100E1DD44FDB00600F7F /* MobileSubstrate */ = {
+			isa = PBXGroup;
+			children = (
+				BD38100F1DD44FDB00600F7F /* DynamicLibraries */,
+			);
+			name = MobileSubstrate;
+			sourceTree = "<group>";
+		};
+		BD38100F1DD44FDB00600F7F /* DynamicLibraries */ = {
+			isa = PBXGroup;
+			children = (
+				BD3810101DD44FDB00600F7F /* MMPlugin.plist */,
+			);
+			name = DynamicLibraries;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXHeadersBuildPhase section */
+		BD380FFB1DD44FDB00600F7F /* Headers */ = {
+			isa = PBXHeadersBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXHeadersBuildPhase section */
+
+/* Begin PBXNativeTarget section */
+		BD380FFD1DD44FDB00600F7F /* MMPlugin */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BD3810131DD44FDB00600F7F /* Build configuration list for PBXNativeTarget "MMPlugin" */;
+			buildPhases = (
+				BD380FF91DD44FDB00600F7F /* Sources */,
+				BD380FFA1DD44FDB00600F7F /* Frameworks */,
+				BD380FFB1DD44FDB00600F7F /* Headers */,
+				BD380FFC1DD44FDB00600F7F /* ShellScript */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MMPlugin;
+			productName = MMPlugin;
+			productReference = BD380FFE1DD44FDB00600F7F /* MMPlugin.dylib */;
+			productType = "com.apple.product-type.library.dynamic";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		BD380FF51DD44FDB00600F7F /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0800;
+				TargetAttributes = {
+					BD380FFD1DD44FDB00600F7F = {
+						CreatedOnToolsVersion = 8.0;
+						DevelopmentTeam = XL6E9K2MQ5;
+						ProvisioningStyle = Automatic;
+					};
+				};
+			};
+			buildConfigurationList = BD380FF81DD44FDB00600F7F /* Build configuration list for PBXProject "MMPlugin" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = BD380FF41DD44FDB00600F7F;
+			productRefGroup = BD380FFF1DD44FDB00600F7F /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				BD380FFD1DD44FDB00600F7F /* MMPlugin */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		BD380FFC1DD44FDB00600F7F /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "/opt/iOSOpenDev/bin/iosod --xcbp";
+		};
+/* End PBXShellScriptBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		BD380FF91DD44FDB00600F7F /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BD38100C1DD44FDB00600F7F /* MMPlugin.mm in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		BD3810111DD44FDB00600F7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = NO;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = NO;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Debug;
+		};
+		BD3810121DD44FDB00600F7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				COPY_PHASE_STRIP = YES;
+				EXCLUDED_RECURSIVE_SEARCH_PATH_SUBDIRECTORIES = "*.nib *.lproj *.gch (*) .DS_Store CVS .svn .git .hg *.xcodeproj *.xcode *.pbproj *.pbxproj";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(iOSOpenDevPath)/frameworks/**",
+					"$(SDKROOT)/System/Library/PrivateFrameworks",
+				);
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				HEADER_SEARCH_PATHS = "$(iOSOpenDevPath)/include/**";
+				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				LIBRARY_SEARCH_PATHS = "$(iOSOpenDevPath)/lib/**";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+				iOSOpenDevPath = /opt/iOSOpenDev;
+			};
+			name = Release;
+		};
+		BD3810141DD44FDB00600F7F /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = XL6E9K2MQ5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MMPlugin/MMPlugin-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Debug;
+		};
+		BD3810151DD44FDB00600F7F /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_IDENTITY = "";
+				DEVELOPMENT_TEAM = XL6E9K2MQ5;
+				DYLIB_COMPATIBILITY_VERSION = 1;
+				DYLIB_CURRENT_VERSION = 1;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "MMPlugin/MMPlugin-Prefix.pch";
+				INSTALL_PATH = /Library/MobileSubstrate/DynamicLibraries;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				iOSOpenDevBuildPackageOnAnyBuild = NO;
+				iOSOpenDevCopyOnBuild = NO;
+				iOSOpenDevDevice = "";
+				iOSOpenDevInstallOnAnyBuild = NO;
+				iOSOpenDevInstallOnProfiling = YES;
+				iOSOpenDevRespringOnInstall = YES;
+				iOSOpenDevUsePackageVersionPList = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		BD380FF81DD44FDB00600F7F /* Build configuration list for PBXProject "MMPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3810111DD44FDB00600F7F /* Debug */,
+				BD3810121DD44FDB00600F7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BD3810131DD44FDB00600F7F /* Build configuration list for PBXNativeTarget "MMPlugin" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD3810141DD44FDB00600F7F /* Debug */,
+				BD3810151DD44FDB00600F7F /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = BD380FF51DD44FDB00600F7F /* Project object */;
+}
