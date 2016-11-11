@@ -893,6 +893,7 @@ CHConstructor
 ```
 这是CaptainHook的入口函数，所有被hook的类必须在这里声明加载，类里面的方法要在这里声明hook。  
 然后就可以往类和方法中写代码了，代码太长不贴了，我放在了github上面[MMPlugin](https://github.com/gaoshilei/MMPlugin)  
+**这个项目中包含了小视频转发、自动抢红包、修改微信运动步数功能，自动抢红包和修改微信运动步数功能可以手动关闭。**
 >	注意：如果用到了系统的类记住要导入相应的类库（比方说UIKit）和头文件否则编译的时候会报错。
 
 编译成功之后就可以在Products文件夹中找到编译好的静态库了  
@@ -946,4 +947,5 @@ Installing 'com.xxxxxxxxxxxx'
  - GeneratingApplicationMap (90%)
  - Complete
 ```
-安装完成，在手机上打开微信试试我们添加的新功能吧！如果某个环节卡住会报错，请根据报错信息进行修改。
+安装完成，在手机上打开微信试试我们添加的新功能吧！如果某个环节卡住会报错，请根据报错信息进行修改。请看效果图：
+![小视频转发](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91%E6%95%88%E6%9E%9C%E5%9B%BE.jpg)
