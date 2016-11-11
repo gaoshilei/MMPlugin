@@ -1,5 +1,13 @@
+#	前言
+此文为逆向微信二进制文件，实现朋友圈小视频转发的教程，从最开始的汇编代码入手到最后重签名安装等操作，手把手教你玩转微信！学会之后再去逆向微信其他功能易如反掌。  
+本篇文章由于篇幅太长分成了两篇，**上篇**讲解的是逆向工作，也就是怎么找到相关的函数和方法实现，**下篇**讲解的是怎么在非越狱机重签名安装和越狱机tweak安装的详细过程。  
+**正文的第二部分还提供了微信自动抢红包、修改微信步数的代码，这些都可以照葫芦画瓢按照本文的套路一步步逆向找到，这里就不再赘述。**  
+在实践之前，需要准备好一部越狱的手机，然后将下文列出的所有工具安装好。IDA跟Reveal都是破解版，IDA的正版要2000多刀，对于这么牛逼的逆向工具确实物有所值，不过不是专门研究逆向的公司也没必要用正版的，下个Windows的破解版就好，Mac上暂时没找到。Mac上可以用hopper代替IDA，也是一款很牛逼的逆向工具。废话不多说，正式开始吧！
+  
+
+#	正文
 ## 一、获取朋友圈的小视频
->	注意：本文逆向的微信的二进制文件为6.3.28版本，版本不同IDA中的基地址也不相同
+>	注意：本文逆向的微信的二进制文件为6.3.28版本，如果是不同的微信版本，二进制文件中的基地址也不相同
 
 ####	本文涉及到的工具  
 1. [cycript](http://www.cycript.org) 
@@ -14,9 +22,11 @@
 10. tcprelay（本地端口映射，USB连接SSH，不映射可通过WiFi连接） 
 11. [dumpdecrypted](https://github.com/stefanesser/dumpdecrypted)
 12. [class-dump](http://stevenygard.com/projects/class-dump/) 
+13. [iOS App Signer](https://github.com/DanTheMan827/ios-app-signer)
+14. 编译好的[yololib](https://github.com/gaoshilei/yololib)
 
 **逆向环境为MacOS	+	iPhone5S 9.1越狱机**  
-用dumpdecrypted给微信砸壳，获得一个WeChat.decrypted文件，先把这个文件扔到IDA中分析（60MB左右的二进制文件，IDA差不多40分钟才能分析完），用class-dump导出所有头文件  
+先用dumpdecrypted给微信砸壳（不会的请我写的看[这篇教程](http://www.gaoshilei.com/2016/07/17/dumpdecrypted给App砸壳/)），获得一个WeChat.decrypted文件，先把这个文件扔到IDA中分析（60MB左右的二进制文件，IDA差不多40分钟才能分析完），用class-dump导出所有头文件  
 
 ```
 LeonLei-MBP:~ gaoshilei$ class-dump -S -s -H /Users/gaoshilei/Desktop/reverse/binary_for_class-dump/WeChat.decrypted -o /Users/gaoshilei/Desktop/reverse/binary_for_class-dump/class-Header/WeChat
@@ -649,9 +659,9 @@ UIImage *image = [[self valueForKey:@"_sightView"] getImage];
 }
 ```
 
-此时再点击返回按钮就可以正常退出了，此外，在WCContentItemViewTemplateNewSight中发现了一个方法叫做`- (void)sendSightToFriend;`，可以直接将小视频转发给好友，至此小视频转发的功能已经实现了。
+此时再点击返回按钮就可以正常退出了，此外，在WCContentItemViewTemplateNewSight中发现了一个方法叫做`- (void)sendSightToFriend;`，可以直接将小视频转发给好友，至此小视频转发的功能已经找到了。
 
-##	三、功能实现  
+##	三、代码编写及打包安装  
 >	小视频的转发支持4个功能，转发至朋友圈、转发至好友、保存到本地相册、拷贝小视频链接到粘贴板。如果小视频没有下载长按只会有小视频的url链接。
 
 ###	1.越狱机（tweak安装）  
@@ -948,4 +958,6 @@ Installing 'com.xxxxxxxxxxxx'
  - Complete
 ```
 安装完成，在手机上打开微信试试我们添加的新功能吧！如果某个环节卡住会报错，请根据报错信息进行修改。请看效果图：  
-![小视频转发](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91%E6%95%88%E6%9E%9C%E5%9B%BE.jpg)
+![小视频转发](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91%E6%95%88%E6%9E%9C%E5%9B%BE.jpg)  
+
+####	有任何问题请在文章评论区留言，或者在博客首页点击邮件联系我。
