@@ -947,5 +947,5 @@ Installing 'com.xxxxxxxxxxxx'
  - GeneratingApplicationMap (90%)
  - Complete
 ```
-安装完成，在手机上打开微信试试我们添加的新功能吧！如果某个环节卡住会报错，请根据报错信息进行修改。请看效果图：
+安装完成，在手机上打开微信试试我们添加的新功能吧！如果某个环节卡住会报错，请根据报错信息进行修改。请看效果图：  
 ![小视频转发](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91%E6%95%88%E6%9E%9C%E5%9B%BE.jpg)
