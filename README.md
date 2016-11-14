@@ -27,7 +27,7 @@
 14. 编译好的[yololib](https://github.com/gaoshilei/yololib)
 
 **逆向环境为MacOS	+	iPhone5S 9.1越狱机**  
-先用dumpdecrypted给微信砸壳（不会的请我写的看[这篇教程](http://www.gaoshilei.com/2016/07/17/dumpdecrypted给App砸壳/)），获得一个WeChat.decrypted文件，先把这个文件扔到IDA中分析（60MB左右的二进制文件，IDA差不多40分钟才能分析完），用class-dump导出所有头文件  
+先用dumpdecrypted给微信砸壳（不会的请我写的看[这篇教程](http://www.gaoshilei.com/2016/08/08/dumpdecrypted给App砸壳/)），获得一个WeChat.decrypted文件，先把这个文件扔到IDA中分析（60MB左右的二进制文件，IDA差不多40分钟才能分析完），用class-dump导出所有头文件  
 
 ```
 LeonLei-MBP:~ gaoshilei$ class-dump -S -s -H /Users/gaoshilei/Desktop/reverse/binary_for_class-dump/WeChat.decrypted -o /Users/gaoshilei/Desktop/reverse/binary_for_class-dump/class-Header/WeChat
