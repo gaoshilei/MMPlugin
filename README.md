@@ -33,7 +33,7 @@
 LeonLei-MBP:~ gaoshilei$ class-dump -S -s -H /Users/gaoshilei/Desktop/reverse/binary_for_class-dump/WeChat.decrypted -o /Users/gaoshilei/Desktop/reverse/binary_for_class-dump/class-Header/WeChat
 ``` 
 我滴个亲娘！一共有8000个头文件，微信果然工程量浩大！稳定一下情绪，理一理思路继续搞。要取得小视频的下载链接，找到播放视频的View，顺藤摸瓜就能找到小视频的URL。用Reveal查看小视频的播放窗口
-![Reveal](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91Reveal.png)  
+![Reveal](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91Reveal.png)  
 可以看出来WCContentItemViewTemplateNewSigh这个对象是小视频的播放窗口，它的subView有WCSightView，SightView、SightPlayerView，这几个类就是我们的切入点。
 保存视频到favorite的时候是长按视频弹出选项的，那么在WCContentItemViewTemplateNewSight这个类里面可能有手势相关的方法，去刚才导出的头文件中找线索。  
 
@@ -158,7 +158,7 @@ contentObj: <WCContentItem: 0x15f57d000>
 (lldb) c
 ```
 此时会发现我们要刷新的那条小视频内容全部为空  
-![小视频内容为空](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91-%E8%BD%AC%E5%8F%91%E5%B0%8F%E8%A7%86%E9%A2%91%E4%B8%BA%E7%A9%BA.jpg)  
+![小视频内容为空](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91-%E8%BD%AC%E5%8F%91%E5%B0%8F%E8%A7%86%E9%A2%91%E4%B8%BA%E7%A9%BA.jpg)  
 到这里已经找到了小视频的源数据获取方法，问题是我们怎么拿到这个WCDataItem呢？继续看IDA分析函数的调用情况：
 >	WCTimeLineViewController - (void)genNormalCell:(id) indexPath:(id)
  
@@ -246,7 +246,7 @@ __text:0000000101287CE8                 MOV             X0, X20
 2.	接着找`selRef_calcDataItemIndex_ `：  
 在0x101287C58的位置找到它的调用者x0，x0通过x22赋值，继续向上寻找，发现在最上面0x101287BF0的位置，x22是x0赋值的，一开始的x0就是`WCTimeLineViewController`自身。  
 在0x101287C4C位置发现传入的参数来自x2,x2是通过上一步`selRef_section`函数的返回值x0赋值的，在0x101287C30位置可以发现`selRef_section`函数的调用者是x20赋值的，如下图所示，最终找到`selRef_section`的调用者是x3  
-![selRef_section函数的调用者](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91-selRef_section%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8%E8%80%85.png)  
+![selRef_section函数的调用者](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91-selRef_section%E5%87%BD%E6%95%B0%E7%9A%84%E8%B0%83%E7%94%A8%E8%80%85.png)  
 x3就是函数` WCTimeLineViewController - (void)genNormalCell:(id) indexPath:(id)`的第二个参数indexPath,，所以`selRef_calcDataItemIndex_ `的参数是`[IndexPath section]`。  
 对上面的分析结果做个梳理：  
 因此`getTimelineDataItemOfIndex:`的调用者可以通过
@@ -421,7 +421,7 @@ typedef enum UIControlEvents : NSUInteger {
 可以看出来UIControlEventTouchDown对应1，UIControlEventTouchUpInside对应128，UIControlEventTouchUpOutside对应64，三者相加正好193！原来调用`[#0x1277a9d70 allControlEvents]`的时候返回的应该是枚举，有多个枚举则把它们的值相加，是不是略坑？我也是这样觉得的！刚才我们把三种ControlEvent对应的action都打印出来了，继续LLDB+IDA进行动态分析。
 ####	（2）找到小视频拍摄完成跳转到发布界面的方法  
 因为要找到小视频发布的方法，所以对应的`btnPress`函数我们并不关心，把重点放在`btnRelease`上面，拍摄按钮松开后就会调用的方法。在IDA中找到这个方法
-![MainFrameSightViewController - (void)btnRelease](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91-btnRelease.png)  
+![MainFrameSightViewController - (void)btnRelease](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91-btnRelease.png)  
 找到之后下个断点
 
 ```OC
@@ -521,7 +521,7 @@ B               loc_102095288
 <OS_dispatch_queue: CAPTURE.CALLBACK[0x13610bcd0] = { xrefcnt = 0x4, refcnt = 0x4, suspend_cnt = 0x0, locked = 1, target = com.apple.root.default-qos.overcommit[0x1a0aa3700], width = 0x0, running = 0x0, barrier = 1 }>
 ```
 所以代码不会跳转到loc_10261D054而是走的左侧，在左侧的代码中发现启用了一个block，这个block是子程序sub_10261D0AC，地址为0x10261D0AC，找到这个地址，结构如下图所示：
-![sub_10261D0AC](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91sub_10261D0AC.png)  
+![sub_10261D0AC](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91sub_10261D0AC.png)  
 可以看出来主要分两条线，我们在第一个方框的末尾也就是0x10261D108位置下个断点，等拍摄完毕触发断点之后打印x0的值为1，这里的汇编代码为
 
 ```OC
@@ -862,7 +862,7 @@ yololib可以将dylib注入进WeChat二进制文件中，这样才能是你的Ho
 
 #####（1）生成静态库  
 在上一步中已经安装好iOSOpendev，此时打开Xcode新建项目，在选择工程界面会出现iOSOpendev的工程，这里我们要选择CaptainHook Tweak项目
-![iOSOpenDev](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8DiOSDev.png)
+![iOSOpenDev](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8DiOSDev.png)
 新建好的工程只有一个.mm文件，我们只需要把所有hook方法写在这个文件中即可。  
 因为非越狱机不能像越狱机一样可以安装tweak插件对原来的应用进行hook，CaptainHook使用的Runtime机制实现，利用宏命令封装类定义、方法替换等功能，简单介绍它的使用方法：  
 
@@ -908,7 +908,7 @@ CHConstructor
 >	注意：如果用到了系统的类记住要导入相应的类库（比方说UIKit）和头文件否则编译的时候会报错。
 
 编译成功之后就可以在Products文件夹中找到编译好的静态库了  
-![编译好的静态库](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-%E7%BC%96%E8%AF%91%E5%A5%BD%E7%9A%84%E9%9D%99%E6%80%81%E5%BA%93.png)  
+![编译好的静态库](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-%E7%BC%96%E8%AF%91%E5%A5%BD%E7%9A%84%E9%9D%99%E6%80%81%E5%BA%93.png)  
 在finder中找到它，拷贝出来待用。
 #####	(2)	签名+打包+安装  
 进行到这里目前应该有的材料有：
@@ -929,7 +929,7 @@ LeonLei-MBP:WeChat gaoshilei$ ./yololib WeChat MMPlugin.dylib
 
 完成之后将MMPlugin.dylib和WeChat拷贝到原来的WeChat.app中，覆盖掉原来的WeChat文件。  
 打开iOS App Signer按照下图选择好各项参数：
-![iOS App Signer](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-iOSAppSigner.png)  
+![iOS App Signer](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-iOSAppSigner.png)  
 我这里选择的是企业级证书，个人开发者证书也是可以的，一定要选择生产环境的，选好之后点击start，稍等片刻一个经过重签名的ipa包就生成了。  
 连上你的手机执行下面的命令查看ideviceinstaller是否连接上手机：
 
@@ -959,6 +959,6 @@ Installing 'com.xxxxxxxxxxxx'
  - Complete
 ```
 安装完成，在手机上打开微信试试我们添加的新功能吧！如果某个环节卡住会报错，请根据报错信息进行修改。请看效果图：  
-![小视频转发](http://oeat6c2zg.bkt.clouddn.com/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91%E6%95%88%E6%9E%9C%E5%9B%BE.jpg)  
+![小视频转发](http://www.leonlei.top/%E5%BE%AE%E4%BF%A1%E9%87%8D%E7%AD%BE%E5%90%8D-%E5%B0%8F%E8%A7%86%E9%A2%91%E8%BD%AC%E5%8F%91%E6%95%88%E6%9E%9C%E5%9B%BE.jpg)  
 
 ####	有任何问题请在文章评论区留言，或者在博客首页点击邮件联系我。
