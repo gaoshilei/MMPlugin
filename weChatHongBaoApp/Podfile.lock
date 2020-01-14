@@ -1,0 +1,16 @@
+PODS:
+  - MakeRedEnvelop (1.1.0)
+
+DEPENDENCIES:
+  - MakeRedEnvelop (from `./MakeRedEnvelop`)
+
+EXTERNAL SOURCES:
+  MakeRedEnvelop:
+    :path: "./MakeRedEnvelop"
+
+SPEC CHECKSUMS:
+  MakeRedEnvelop: 6f760b45f6a5f68c576d3b07dfbcf8a36145bc61
+
+PODFILE CHECKSUM: 998dc6a4c578565ffb4c7bd08477952a83d86b3e
+
+COCOAPODS: 1.8.4

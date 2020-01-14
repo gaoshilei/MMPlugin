@@ -1,0 +1,6 @@
+framework module MakeRedEnvelop {
+  umbrella header "MakeRedEnvelop-umbrella.h"
+
+  export *
+  module * { export * }
+}

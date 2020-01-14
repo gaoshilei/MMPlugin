@@ -1,0 +1,28 @@
+{
+  "name": "MakeRedEnvelopEasy",
+  "version": "1.1.0",
+  "summary": "Make Wechat RedEnvelop Easy",
+  "description": "- 使用CaptainHook改写锅神的WeChatRedEnvelop, 借助猴神的强力工具MonkeyDev开发",
+  "homepage": "https://github.com/iOSleep/MakeRedEnvelopEasy",
+  "license": {
+    "type": "BSD",
+    "file": "LICENSE"
+  },
+  "authors": {
+    "iOSleep": "mx.yolande@gmail.com"
+  },
+  "social_media_url": "http://weibo.cn/iOSleep",
+  "platforms": {
+    "ios": "8.0"
+  },
+  "source": {
+    "git": "https://github.com/iOSleep/MakeRedEnvelopEasy.git",
+    "tag": "1.1.0"
+  },
+  "source_files": "**/*.{h,m}",
+  "requires_arc": true,
+  "pod_target_xcconfig": {
+    "ONLY_ACTIVE_ARCH": "NO",
+    "HEADER_SEARCH_PATHS": "/opt/MonkeyDev/include"
+  }
+}
