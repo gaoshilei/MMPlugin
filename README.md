@@ -1,5 +1,3 @@
-本人博客地址：[传送门](http://www.gaoshilei.com)  
-
 [2020.1.14更新无需越狱安装](https://github.com/gaoshilei/MMPlugin/tree/master/weChatHongBaoApp)    
 
 #	前言
